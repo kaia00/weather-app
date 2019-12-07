@@ -18,7 +18,7 @@ class App extends Component {
 
   handleSubmit(event) {
     fetch(
-      "http://api.openweathermap.org/data/2.5/forecast?APPID=b5b5be990915bf18f851f86d73398368&units=metric&q=" +
+      "http://api.openweathermap.org/data/2.5/weather?APPID=b5b5be990915bf18f851f86d73398368&units=metric&q=" +
         this.state.city
     )
       .then(res => res.json())
@@ -43,9 +43,9 @@ class App extends Component {
           <button onClick={this.handleSubmit}>Fetch</button>
           {this.state.weather && (
             <div>
-              <h2>{this.state.weather.list[0].main.temp}</h2>
-              <h2>{this.state.weather.list[0].main.humidity}</h2>
-              <h2>{this.state.weather.list[0].wind.speed}</h2>
+              <h2>{this.state.weather.main.temp}</h2>
+              <h2>{this.state.weather.main.humidity}</h2>
+              <h2>{this.state.weather.wind.speed}</h2>
             </div>
           )}
         </header>
