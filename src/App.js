@@ -13,7 +13,7 @@ const App = () => {
   const handleSubmit = event => {
     axios
       .get(
-        "http://api.openweathermap.org/data/2.5/weather?APPID=b5b5be990915bf18f851f86d73398368&units=metric&q=" +
+        "https://api.openweathermap.org/data/2.5/weather?APPID=b5b5be990915bf18f851f86d73398368&units=metric&q=" +
           city
       )
       .then(response => {
