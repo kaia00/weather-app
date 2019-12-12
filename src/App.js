@@ -13,15 +13,24 @@ const App = () => {
   const handleSubmit = event => {
     axios
       .get(
-        "https://api.openweathermap.org/data/2.5/weather?APPID=b5b5be990915bf18f851f86d73398368&units=metric&q=" +
-          city
+        "https://api.openweathermap.org/data/2.5/weather?APPID=b5b5be990915bf18f851f86d73398368",
+        {
+          params: {
+            q: city,
+            units: "metric"
+          }
+        }
       )
       .then(response => {
         setWeather(response.data);
       })
       .catch(error => {
         console.error(error);
-        alert("City not found! Please try again.");
+        if (error.response.status === 404) {
+          alert("City not found! Please try again.");
+        } else {
+          alert(error);
+        }
       });
   };
 
@@ -41,7 +50,7 @@ const App = () => {
         </button>
         {weather && (
           <div>
-            <div className="Text">Temperature: {weather.main.temp} C</div>
+            <div className="Text">Temperature: {weather.main.temp} °C</div>
             <div className="Text">Humidity: {weather.main.humidity} %</div>
             <div className="Text">Wind speed: {weather.wind.speed} m/s</div>
           </div>
