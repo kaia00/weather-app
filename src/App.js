@@ -21,7 +21,7 @@ const App = () => {
       })
       .catch(error => {
         console.error(error);
-        alert(error);
+        alert("City not found! Please try again.");
       });
   };
 
