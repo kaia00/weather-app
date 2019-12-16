@@ -12,15 +12,13 @@ const App = () => {
 
   const handleSubmit = event => {
     axios
-      .get(
-        "https://api.openweathermap.org/data/2.5/weather?APPID=b5b5be990915bf18f851f86d73398368",
-        {
-          params: {
-            q: city,
-            units: "metric"
-          }
+      .get("https://api.openweathermap.org/data/2.5/weather", {
+        params: {
+          APPID: "b5b5be990915bf18f851f86d73398368",
+          q: city,
+          units: "metric"
         }
-      )
+      })
       .then(response => {
         setWeather(response.data);
       })
